@@ -10,9 +10,9 @@ BEGIN
 END
 
 
-create PROCEDURE sp_type_user_delete(in _id TINYINT(4))
+CREATE PROCEDURE sp_type_user_delete(in _id TINYINT(4))
 BEGIN
-	DELETE from tbltipousuario WHERE tipoUsu_idUsuario=_id;
+	DELETE from tbltipousuario WHERE tipUsu_idUsuario=_id;
 END
 
 create view vw_typeUser
