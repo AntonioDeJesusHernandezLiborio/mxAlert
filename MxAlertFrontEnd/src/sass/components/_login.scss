@@ -1,0 +1,81 @@
+/*------------------------------Login----------------------------------------*/
+.login-cont{
+    /* The image used */
+    height: 1000px;
+  background-image: url("../img/background_login.jpg");
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(2px);
+  /* Full height */
+    
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login {
+    // background-color: rgb(71, 69, 69); /* Fallback color */
+     background-color:$white; /* Black w/opacity/see-through */
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    max-width: 350px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px 10px;
+   color: $black;
+    
+  }
+
+  .year-p{
+      color: $gray;
+      font-weight: 400;
+  }
+
+  
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+  color: #2C3E50;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;}
+
+.registera{
+  display: block;
+  text-decoration: none;
+  margin: 10px auto;
+  font-weight: 400;
+  color: $white;
+  text-align: center;
+  background-color: $gray;
+  border: 1px solid transparent;
+  padding: 6px;
+  font-size: 20px;
+ height: 38px;
+  border-radius: 4px;
+ transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.registera:hover{
+    text-decoration: none; 
+    background: $black;
+    color: $white;
+}
