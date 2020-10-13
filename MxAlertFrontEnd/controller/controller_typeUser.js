@@ -1,5 +1,32 @@
 const URL = 'http://localhost/mxalert/MxAlertBackEnd/controller/controller_typeUser.php';
 var id = 0;
+var registros = [];
+const typeResponse = {
+    success: "success"
+};
+
+const typeMessage = {
+    emptyFiel: {
+        Alert: "alert alert-danger",
+        Menssage: "Campo vacio"
+    },
+    successAdd: {
+        Alert: "alert alert-success",
+        Menssage: "Tipo de usuario agregado correctamente"
+    },
+    successEdit: {
+        Alert: "alert alert-success",
+        Menssage: "Tipo de usuario editado correctamente"
+    },
+    successDelete: {
+        Alert: "alert alert-success",
+        Menssage: "Tipo de usuario eliminado correctamente"
+    },
+    Error: {
+        Alert: "alert alert-danger",
+        Menssage: "Hubo un error al realizar la opción"
+    }
+}
 
 const typeUser = new Vue({
     el: '#tableTypeUser',
@@ -15,8 +42,7 @@ const typeUser = new Vue({
     },
     methods: {
         showData: function () {
-            let formdata = new FormData();
-            axios.get(URL, formdata)
+            axios.get(URL)
                 .then(function (response) {
                     typeUser.typerUsers = response.data.typeUser;
                 })
@@ -26,17 +52,17 @@ const typeUser = new Vue({
                 nombre: document.getElementById("name-insert").value
             }
             if (typeUser.validateBoxes(datos)) {
-                typeUser.sendAlert('alert alert-danger', 'Campo vacio');
+                typeUser.sendAlert(typeMessage.emptyFiel);
                 return false;
             } else {
                 axios.post(URL, datos)
                     .then(function (response) {
-                        if (response.data.msj == "success") {
+                        if (response.data.msj == typeResponse.success) {
                             typeUser.showData()
-                            typeUser.clearTextBox(),
-                                typeUser.sendAlert('alert alert-success', 'Tipo de usuario agregado correctamente');
+                            typeUser.clearTextBox()
+                            typeUser.sendAlert(typeMessage.successAdd);
                         } else {
-                            typeUser.sendAlert(`alert alert-danger', 'Hubo un error al registrar ${insertado.msj}`);
+                            typeUser.sendAlert(typeMessage.Error);
                         }
                     })
             }
@@ -47,17 +73,17 @@ const typeUser = new Vue({
                 nombre: document.getElementById("name-update").value
             }
             if (typeUser.validateBoxes(datos)) {
-                typeUser.sendAlert('alert alert-danger', 'Campo vacio');
+                typeUser.sendAlert(typeMessage.emptyFiel);
                 return false;
             } else {
                 axios.put(URL, datos)
                     .then(function (response) {
-                        if (response.data.msj == "success") {
+                        if (response.data.msj == typeResponse.success) {
                             typeUser.showData()
-                            typeUser.clearTextBox(),
-                                typeUser.sendAlert('alert alert-success', 'Tipo de usuario actualizado correctamente');
+                            typeUser.clearTextBox()
+                            typeUser.sendAlert(typeMessage.successEdit);
                         } else {
-                            typeUser.sendAlert(`alert alert-danger', 'Hubo un error al actualizar ${response.data.msj}`);
+                            typeUser.sendAlert(typeMessage.Error);
                         }
                     })
             }
@@ -67,21 +93,20 @@ const typeUser = new Vue({
                 id: id,
                 nombre: document.getElementById("name-delete").value
             }
-           if (typeUser.validateBoxes(datos)) {
-                typeUser.sendAlert('alert alert-danger', 'Campo vacio');
+            if (typeUser.validateBoxes(datos)) {
+                typeUser.sendAlert(typeMessage.emptyFiel);
                 return false;
             } else {
-                axios.delete(`${URL}?id=${id}`,{ method: 'DELETE' })
+                axios.delete(`${URL}?id=${id}`)
                     .then(function (response) {
-                        console.log(response);
-                        if (response.data.msj == "success") {
+                        if (response.data.msj == typeResponse.success) {
                             typeUser.showData()
-                            typeUser.clearTextBox(),
-                            typeUser.sendAlert('alert alert-success', 'Tipo de usuario eliminado correctamente');
+                            typeUser.clearTextBox()
+                            typeUser.sendAlert(typeMessage.successDelete);
                         } else {
-                            typeUser.sendAlert(`alert alert-danger', 'Hubo un error al eliminar ${response.data.msj}`);
+                            typeUser.sendAlert(typeMessage.Error);
                         }
-                })
+                    })
             }
         },
 
@@ -95,9 +120,9 @@ const typeUser = new Vue({
             document.getElementById("name-delete").value = typeUser.nombre;
         },
 
-        sendAlert(alert, menssage) {
-            typeUser.tipoalertaA = alert,
-                typeUser.mensajesA = menssage
+        sendAlert(menssage) {
+            typeUser.tipoalertaA = menssage.Alert;
+            typeUser.mensajesA = menssage.Menssage;
         },
 
         validateBoxes(datos) {
@@ -108,6 +133,10 @@ const typeUser = new Vue({
         },
         clearTextBox() {
             document.getElementById("name-insert").value = ''
+        },
+        clearTable() {
+
+            table.clear().draw();
         }
     }
 });
