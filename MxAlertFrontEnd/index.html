@@ -2,16 +2,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Tipo Usuarios</title>
-  <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/style.css">
-  <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/bootstrap.css">
-  <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/all.css">
-  <script type="text/javascript" src="../MxAlertFrontEnd/src/js/jquery-3.4.1.js"></script>
-  <script type="text/javascript" src="../MxAlertFrontEnd/src/js/bootstrap.js"></script>
-  <link rel="stylesheet" href="../MxAlertFrontEnd/src/plugins/datatables/dataTables.bootstrap4.min.css">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -59,136 +49,11 @@
     <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/custom.css">
 
     <!-- Modernizr -->
-    <script src="../MxAlertFrontEnd/src/js/modernizr-custom.js"></script>
+    <script src="js/modernizr-custom.js"></script>
 
 </head>
 
 <body>
-  <div class="wrapper">
-    <div id="content" class="bg-ccc">
-      <div class="mx-width-1075 container-fluid" id="tableTypeUser">
-        <div class="mycards">
-          <!--Mycard-->
-          <div class="content-mycards">
-            <div class="container">
-              <h4 class="text-center font-weight-bold mt-2">Tipo Usuarios</h4>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#new-typeUser">Nuevo</button>
-            </div>
-            <div class="container text-center">
-              <br>
-              <div v-bind:class="tipoalertaA" role="alert">
-                {{mensajesA}}
-              </div>
-              <!-- Tabla de roles -->
-              <div class="row d-flex justify-content-center">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-md-12">
-                  <div class="table-responsive scrollbar" style="height:355px; overflow: scroll;">
-                    <table class="table table-hover">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th>
-                            <h6>Codigo</h6>
-                          </th>
-                          <th>
-                            <h6>Nombre</h6>
-                          </th>
-                          <th>
-                            <h6>Acciones</h6>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="typeUser in typerUsers">
-                          <th scope="row">{{typeUser.id}}</th>
-                          <td>{{typeUser.nombre}}</td>
-                          <td>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#edit-newTypeUser"
-                              @click="passDataEdit(typeUser)">Editar</button>
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#delete-typeUser"
-                              @click="passDataDelete(typeUser)">Eliminar</button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-
-        <!--- MODALES -->
-        <!--- MODAL NUEVO -->
-
-        <div id="nuevoRol">
-          <div class="modal fade" id="new-typeUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Nuevo tipo de usuario</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body  text-center">
-                  <label for="nombre" class="col-form-label">Nombre:</label>
-                  <input type="text" class="form-control" id="name-insert">
-
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal" @click="insert()">Guardar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--- MODAL EDITAR -->
-        <div class="modal fade" id="edit-newTypeUser" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Editar tipo usuario</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body  text-center">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="name-update">
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" @click="edit()">Guardar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- MODAL ELIMINAR-->
-        <div class="modal fade bd-example-modal-sm" id="delete-typeUser" tabindex="-1" role="dialog"
-          aria-labelledby="mySmallModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Eliminar</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body  text-center">
-                <h5 class="text-center">¿Eliminar tipo usuario?</h5>
-                <div class="form-group">
-                  <label for="">Nombre:</label>
-                  <input class="form-control" type="text" id="name-delete" disabled>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteType()">SI</button>
-              </div>
 
 <!-- status spinner showing while loading the page -->
 <div id="preloader"></div>
@@ -215,7 +80,7 @@
                         <a class="nav-link" href="#portfolio">Contacto</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin/login.html">Iniciar Sesión</a>
+                        <a class="nav-link" href="../MxAlertFrontEnd/admin/login.html">Iniciar Sesión</a>
                     </li>
                 </ul>
             </div>
@@ -272,7 +137,7 @@
                 </div>
                 <div class="col-lg-6 col-12">
                     <div class="photo-wrap">
-                        <img src="../MxAlertFrontEnd/src/img/photo.jpg" class="photo img-fluid" alt=""/>
+                        <img src="img/photo.jpg" class="photo img-fluid" alt=""/>
                         <div class="photo-overlay">
                             <div class="photo-text social">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -378,27 +243,6 @@
                 </div>
             </div>
         </div>
-      </div>
-      <!--End Mycard-->
-    </div>
-  </div>
-  </div>
-
-</body>
-<script src="../MxAlertFrontEnd/src/js/axios.js"></script>
-<script src="../MxAlertFrontEnd/src/js/vue.js"></script>
-<script src="../MxAlertFrontEnd/src/js/popper.min.js"></script>
-<script src="../MxAlertFrontEnd/src/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../MxAlertFrontEnd/src/plugins/datatables/dataTables.bootstrap4.js"></script>
-<script type="text/javascript" src="../MxAlertFrontEnd/controller/controller_typeUser.js"></script>
-<script>
-  $('#myTableType').DataTable({
-    "language": {
-      "url": "../MxAlertFrontEnd/src/plugins/datatables/Spanish.json"
-    },
-    "order": [[2, "asc"]]
-  });
-</script>
     </footer>
     <!-- FOOTER END -->
 
