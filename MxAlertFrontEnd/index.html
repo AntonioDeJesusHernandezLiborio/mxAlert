@@ -1,162 +1,271 @@
+
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Tipo Usuarios</title>
-  <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/style.css">
-  <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/bootstrap.css">
-  <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/all.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come after these tags -->
 
-  <script type="text/javascript" src="../MxAlertFrontEnd/src/js/jquery-3.4.1.js"></script>
-  <script type="text/javascript" src="../MxAlertFrontEnd/src/js/bootstrap.js"></script>
+    <!-- Fill in the following meta tags -->
+    <meta name="keywords" content="keyword1, keyword2, keyword3"/>
+    <meta name="description" content="Description">
+    <meta name="author" content="Author">
+
+    <!-- Change the site title -->
+    <title>MX ALERT | Regional Soft</title>
+
+    <!-- You can regenerate the favicons as you wish using http://realfavicongenerator.net/, see the theme documentation -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="favicon/manifest.json">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/bootstrap.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,700|Roboto+Condensed:200,300,300i,400,700|Roboto+Mono" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/font-awesome.min.css">
+
+    <!-- Pretty Photo -->
+    <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/prettyPhoto.css"/>
+
+    <!-- Flickity -->
+    <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/flickity.css"/>
+
+    <!-- animate.css -->
+    <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/animate.css"/>
+
+    <!-- Skills bar -->
+    <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/skills-bar.css"/>
+
+    <!-- custom.css - the styling for this template -->
+    <link rel="stylesheet" href="../MxAlertFrontEnd/src/css/custom.css">
+
+    <!-- Modernizr -->
+    <script src="../MxAlertFrontEnd/src/js/modernizr-custom.js"></script>
+
 </head>
 
 <body>
-  <div class="wrapper">
-    <div id="content" class="bg-ccc">
-      <div class="mx-width-1075 container-fluid" id="tableTypeUser">
-        <div class="mycards">
-          <!--Mycard-->
-          <div class="content-mycards">
-            <div class="container">
-              <h4 class="text-center font-weight-bold mt-2">Tipo Usuarios</h4>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#new-typeUser"
-                @click="limpiar()">Nuevo</button>
 
+<!-- status spinner showing while loading the page -->
+<div id="preloader"></div>
+
+<!-- HEADER -->
+<header>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../MxAlertFrontEnd/src/img/logo.png" alt="bestAG"/></a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-0 ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Acerca de Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin/login.html">Iniciar Sesión</a>
+                    </li>
+                </ul>
             </div>
-
-
-            <div class="container text-center">
-              <br>
-              <div v-bind:class="tipoalertaA" role="alert">
-                {{mensajesA}}
-              </div>
-              <!-- Tabla de roles -->
-              <div class="row d-flex justify-content-center">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-md-12">
-                  <div class="table-responsive scrollbar" style="height:355px; overflow: scroll;">
-                    <table class="table table-hover">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th>
-                            <h6>Codigo</h6>
-                          </th>
-                          <th>
-                            <h6>Nombre</h6>
-                          </th>
-                          <th>
-                            <h6>Acciones</h6>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr v-for="typeUser in typerUsers">
-                          <th scope="row">{{typeUser.id}}</th>
-                          <td>{{typeUser.nombre}}</td>
-                          <td>
-                            <button class="btn btn-success" data-toggle="modal" data-target="#edit-newTypeUser"
-                              @click="passDataEdit(typeUser)">Editar</button>
-                            <button class="btn btn-danger" data-toggle="modal" data-target="#delete-typeUser"
-                              @click="passDataDelete(typeUser)">Eliminar</button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-
-          <!--- MODALES -->
-          <!--- MODAL NUEVO -->
-
-          <div id="nuevoRol">
-            <div class="modal fade" id="new-typeUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Nuevo tipo de usuario</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body  text-center">
-                    <label for="nombre" class="col-form-label">Nombre:</label>
-                    <input type="text" class="form-control" id="name-insert">
-
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"
-                      @click="insert()">Guardar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--- MODAL EDITAR -->
-          <div class="modal fade" id="edit-newTypeUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Editar tipo usuario</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body  text-center">
-                  <label for="nombre" class="col-form-label">Nombre:</label>
-                  <input type="text" class="form-control" id="name-update">
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-primary" data-dismiss="modal"
-                    @click="edit()">Guardar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- MODAL ELIMINAR-->
-          <div class="modal fade bd-example-modal-sm" id="delete-typeUser" tabindex="-1" role="dialog"
-            aria-labelledby="mySmallModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog modal-sm" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Eliminar</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body  text-center">
-                  <h5 class="text-center">¿Eliminar tipo usuario?</h5>
-                  <div class="form-group">
-                    <label for="">Nombre:</label>
-                    <input class="form-control" type="text" id="name-delete" disabled>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal" @click="deleteType()">SI</button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-        <!--End Mycard-->
-      </div>
+    </nav>
+</header>
+<!-- HEADER END -->
+
+<div id="content-wrap">
+
+    <!-- HERO AREA -->
+    <div class="jumbotron" id="#hero" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0">
+        <div id="particles-js"></div>
+        <div id="bg-video-wrap">
+            <video id="bg-video" playsinline autoplay muted loop>
+            </video>
+        </div>
+        <div class="container">
+            <h1>Bienvenido</h1>
+            <div class="typed-wrap">
+                We
+                <span class="typed"></span>
+            </div>
+            <div id="intro-text">
+                <strong>MX Alert</strong> es una aplicacíon móvil para realizar denuncias ciudadanas y hacer la publicaciones publicas de manera que puedan aportar información para la solución a tu problema.
+            </div>
+			<a href="#" class="btn btn-primary portfolio-link scroll-link">Descargar Aplicación</a>
+        </div>
     </div>
-  </div>
+    <!-- HERO AREA END -->
+
+    <!-- bouncing arrow -->
+    <div class="arrow-wrap">
+        <a href="#about" class="arrow down-bounce scroll-link fa fa-angle-double-down"></a>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div>
+                        <h4>Regional Soft</h4>
+                        <h2>MX Alert</h2>
+                    </div>
+                    <div id="about-text">
+                        <p>
+                            La microempresa REGIONAL SOFT ofrece el servicio de desarrollo y mantenimiento de software. Además, ofrece un producto denominado MX ALERT que es una aplicación móvil para la publicación de denuncias ciudadanas en la región huasteca hidalguense que ofrecerá diferentes servicios dividido en diferentes planes.
+                        </p>
+                        <p>
+                            La aplicación MX ALERT permite mantener informada a la sociedad de lo que está pasando sobre la delincuencia e inseguridad en la región que es de suma importancia, para ello se pretende crear un organismo encargado de difundir en gran escala y en menor tiempo la denuncia ciudadana de lo que pase en la región, como son robos, desapariciones, peleas, violaciones, etc..
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="photo-wrap">
+                        <img src="../MxAlertFrontEnd/src/img/photo.jpg" class="photo img-fluid" alt=""/>
+                        <div class="photo-overlay">
+                            <div class="photo-text social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-google"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-tumblr"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT END -->
+
+    <!--  OUR TEAM -->
+    <section id="team">
+        <div class="section-header">
+            <div>
+                <h2>Nuestro Equipo</h2>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <div class="team-img">
+                            <img src="../MxAlertFrontEnd/src/img/team/team1.jpg" alt="team member" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="team-title">
+                        <h5>Isaí Antonio Hernández</h5>
+                        <span>Gerencia &amp; Coordinación de Proyectos</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <div class="team-img">
+                            <img src="../MxAlertFrontEnd/src/img/team/team2.jpg" alt="team member" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="team-title">
+                        <h5>Antonio De Jesús Hernández Liborio</h5>
+                        <span>Area de TI, Finanzas &amp; SGSI</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <div class="team-img">
+                            <img src="../MxAlertFrontEnd/src/img/team/team3.jpg" alt="team member" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="team-title">
+                        <h5>Sayra Cortes Torres</h5>
+                        <span>Secretaría &amp; Marketing</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <div class="team-img">
+                        </div>
+                    </div>
+                    <div class="team-title">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="team-member">
+                        <div class="team-img">
+                            <img src="../MxAlertFrontEnd/src/img/team/team4.jpg" alt="team member" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="team-title">
+                        <h5>Osmar Hernández Hernández</h5>
+                        <span>Operativa &amp; Recursos Humanos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--  OUR TEAM END -->
+</div>
+
+<div id="footer-wrap">
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <p>Copyright &copy; | mxalert.com | 2020 Regional Soft</p>
+                </div>
+                <div class="col-12 col-sm-6 social">
+                    <p class="pull-right">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-google"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-tumblr"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-youtube"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- FOOTER END -->
+
+</div>
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="../MxAlertFrontEnd/src/js/jquery-3.1.1.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/jquery-migrate-3.0.0.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/jquery.validate.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/tether.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/bootstrap.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/jquery.stellar.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/jquery.prettyPhoto.js"></script>
+<script src="../MxAlertFrontEnd/src/js/flickity.pkgd.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/isotope.pkgd.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/jquery.debouncedresize.js"></script>
+<script src="../MxAlertFrontEnd/src/js/jquery.waypoints.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/typed.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/particles.min.js"></script>
+<script src="../MxAlertFrontEnd/src/js/config.js"></script>
+<script src="../MxAlertFrontEnd/src/js/custom.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI4pu8_vaoGSCaiW_HQV06I639cIsbdWY&callback=myMap"></script>
 
 </body>
-<script src="../MxAlertFrontEnd/src/js/axios.js"></script>
-<script src="../MxAlertFrontEnd/src/js/vue.js"></script>
-<script type="text/javascript" src="../MxAlertFrontEnd/controller/controller_typeUser.js"></script>
-
 </html>
