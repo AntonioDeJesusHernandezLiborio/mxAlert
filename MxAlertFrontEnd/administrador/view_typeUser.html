@@ -48,41 +48,20 @@
                                     {{mensajesA}}
                                 </div>
                                 <!-- Tabla de roles -->
-                                <div class="row d-flex justify-content-center">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-md-12">
-                                        <div class="table-responsive scrollbar" style="height:355px; overflow: scroll;">
-                                            <table class="table table-bordered table-striped table-condensed">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            <h6>Codigo</h6>
-                                                        </th>
-                                                        <th>
-                                                            <h6>Nombre</h6>
-                                                        </th>
-                                                        <th>
-                                                            <h6>Acciones</h6>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr v-for="typeUser in typerUsers">
-                                                        <th scope="row">{{typeUser.id}}</th>
-                                                        <td>{{typeUser.nombre}}</td>
-                                                        <td>
-                                                            <button class="btn btn-success" data-toggle="modal"
-                                                                data-target="#edit-newTypeUser"
-                                                                @click="passDataEdit(typeUser)">Editar</button>
-                                                            <button class="btn btn-danger" data-toggle="modal"
-                                                                data-target="#delete-typeUser"
-                                                                @click="passDataDelete(typeUser)">Eliminar</button>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                <div class="card-body">
+                                    <table id="myTableTypeUser" class="table table-hover ">
+                                      <thead class="thead-dark">
+                                        <tr>
+                                          <th scope="col">#</th>
+                                          <th scope="col">Nombre</th>
+                                          <th scope="col">Accion</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody id="tbody_product">
+                  
+                                      </tbody>
+                                    </table>
+                                  </div>
                             </div>
                         </div>
 
@@ -180,7 +159,18 @@
     <script src="../assets/js/tasks.js" type="text/javascript"></script>
     <script src="../src/js/axios.js"></script>
     <script src="../src/js/vue.js"></script>
+    <script src="../src/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="../src/plugins/datatables/dataTables.bootstrap4.js"></script>
     <script src="../controller/controller_typeUser.js"></script>
+    <script>
+
+        $('#myTableTypeUser').DataTable({
+          "language": {
+            "url": "../src/plugins/datatables/Spanish.json"
+          },
+          "order": [[ 1, "asc" ]]
+        });
+    </script>
 </body>
 
 </html>

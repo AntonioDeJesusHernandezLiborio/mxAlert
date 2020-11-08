@@ -5,6 +5,10 @@ const typeResponse = {
     success: "success"
 };
 
+const result = {
+    content: "typeUser"
+};
+
 const typeMessage = {
     emptyFiel: {
         Alert: "alert alert-danger",
@@ -41,12 +45,29 @@ const typeUser = new Vue({
         this.showData()
     },
     methods: {
-        showData: function () {
-            axios.get(URL)
-                .then(function (response) {
-                    typeUser.typerUsers = response.data.typeUser;
-                })
+        showData() {
+            window.itemC = new Array();
+            fetch(URL)
+              .then(response => { return response.json() })
+              .then(users => { registros = users })
+              .then(() => {
+                var table = $('#myTableTypeUser').DataTable();
+                table.clear().draw();
+                let str = '';
+                for (let i = 0; i < registros[result.content].length; i++) {
+                  window.itemC[i] = registros[result.content][i];
+                  str += '<tr>';
+                  str += '<td>' + itemC[i].id + '</td>';
+                  str += '<td>' + itemC[i].nombre + '</td>';
+                  str += '<td> <button class="btn btn-success" data-toggle="modal" data-target="#edit-newTypeUser" onclick="typeUser.passDataEdit('+ i +')">Editar</button> <button class="btn btn-danger" data-toggle="modal"  data-target="#delete-typeUser" onclick="typeUser.passDataDelete('+i+')">Eliminar</button> </td>';
+                  str += '</tr>'
+                }
+                table.rows.add($(str)).draw();
+              })
         },
+
+
+
         insert: function () {
             const datos = {
                 nombre: document.getElementById("name-insert").value
@@ -111,13 +132,13 @@ const typeUser = new Vue({
         },
 
 
-        passDataEdit(typeUser) {
-            id = typeUser.id;
-            document.getElementById("name-update").value = typeUser.nombre;
+        passDataEdit(potition) {
+            id =  registros[result.content][potition].id;
+            document.getElementById("name-update").value = registros[result.content][potition].nombre;
         },
-        passDataDelete(typeUser) {
-            id = typeUser.id;
-            document.getElementById("name-delete").value = typeUser.nombre;
+        passDataDelete(potition) {
+            id = registros[result.content][potition].id;
+            document.getElementById("name-delete").value = registros[result.content][potition].nombre;
         },
 
         sendAlert(menssage) {
@@ -133,10 +154,6 @@ const typeUser = new Vue({
         },
         clearTextBox() {
             document.getElementById("name-insert").value = ''
-        },
-        clearTable() {
-
-            table.clear().draw();
         }
     }
 });
