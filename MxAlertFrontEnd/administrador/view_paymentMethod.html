@@ -1,4 +1,4 @@
-<html lang="en">
+html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>Tipo Usuario</title>
+    <title>Metodo de pago</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -26,13 +26,13 @@
         <div id="sidebar"></div>
         <section id="main-content">
             <section class="wrapper">
-                <h3><i class="fa fa-angle-right"></i> CRUD EJEMPLO</h3>
+                <h3><i class="fa fa-angle-right"></i>Metodos de pago</h3>
                 <div class="mx-width-1075 container-fluid" id="tableTypeUser">
                     <div class="mycards">
                         <!--Mycard-->
                         <div class="content-mycards">
                             <div class="container">
-                                <h4 class="text-center font-weight-bold mt-2">Tipo Usuarios</h4>
+                                <h4 class="text-center font-weight-bold mt-2">Listado Metodo de Pago</h4>
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#new-typeUser"
                                    >Nuevo</button>
                             </div>
@@ -43,7 +43,7 @@
                                 </div>
                                 <!-- Tabla de roles -->
                                 <div class="card-body">
-                                    <table id="myTableTypeUser" class="table table-hover ">
+                                    <table id="myTable" class="table table-hover ">
                                       <thead class="thead-dark">
                                         <tr>
                                           <th scope="col">#</th>
@@ -70,8 +70,7 @@
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
-                                            <h4 class="modal-title" id="exampleModalLongTitle">Nuevo tipo de usuario
-                                            </h4>
+                                            <h4 class="modal-title" id="exampleModalLongTitle">Nuevo metodo de pago </h4>
                                         </div>
                                         <div class="modal-body  text-center">
                                             <label for="nombre" class="col-form-label">Nombre:</label>
@@ -95,7 +94,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <h4 class="modal-title" id="exampleModalLongTitle">Editar tipo usuario</h4>
+                                        <h4 class="modal-title" id="exampleModalLongTitle">Editar metodo de pago</h4>
                                     </div>
                                     <div class="modal-body  text-center">
                                         <label for="nombre" class="col-form-label">Nombre:</label>
@@ -121,7 +120,7 @@
                                         <h4 class="modal-title">Eliminar</h4>
                                     </div>
                                     <div class="modal-body  text-center">
-                                        <h5 class="text-center">¿Eliminar tipo usuario?</h5>
+                                        <h5 class="text-center">¿Eliminar metodo de pago?</h5>
                                         <div class="form-group">
                                             <label for="">Nombre:</label>
                                             <input class="form-control" type="text" id="name-delete" disabled>
@@ -155,10 +154,10 @@
     <script src="../src/js/vue.js"></script>
     <script src="../src/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../src/plugins/datatables/dataTables.bootstrap4.js"></script>
-    <script src="../controller/controller_typeUser.js"></script>
+    <script src="../controller/controller_paymentMethod.js"></script>
     <script>
 
-        $('#myTableTypeUser').DataTable({
+        $('#myTable').DataTable({
           "language": {
             "url": "../src/plugins/datatables/Spanish.json"
           },

@@ -1,5 +1,5 @@
 <?php
-class APITypeUser {
+class APITypeComplaint {
     private $conn;
     private $db;
     private $sql;
@@ -17,20 +17,20 @@ class APITypeUser {
     }
 
      public function getData(){
-        $this->sql ="CALL sp_type_user_read();";
+        $this->sql ="CALL sp_typeComplaint_read();";
         $select = $this->conn->query($this->sql);
+        $typeNote = array();
         if($select){
-            $typeNote = array();
             while ($row = mysqli_fetch_array($select) ) {
                     $typeNote[] = array(
-                        'id'=> $row['id'],
-                        'nombre'=>$row['nombre']               
+                        'id'=> $row['clave'],
+                        'nombre'=>$row['nombre']                    
                     );           
             }
-            $title=array("typeUser"=>$typeNote);
+            $title=array("typeComplaint"=>$typeNote);
             $json = json_encode($title,JSON_UNESCAPED_UNICODE);
         }else{
-            $title = array("typeUser"=>$typeNote);
+            $title = array("typeComplaint"=>$typeNote);
             $error []= array('error'=>'informacion no encontrada'); 
             $json = json_encode($error);
         }  
@@ -40,7 +40,7 @@ class APITypeUser {
     }
 
     public function insert($nombre){
-        $this->sql = "CALL sp_type_user_create('$nombre')";
+        $this->sql = "CALL sp_typeComplaint_create('$nombre')";
         $insert = $this->conn->query($this->sql);
         if($insert){
             $titleMessage=array("msj"=>"success");
@@ -54,7 +54,7 @@ class APITypeUser {
     }
 
     public function update($id, $nombre){
-        $this->sql = "CALL sp_type_user_update('$id','$nombre')";
+        $this->sql = "CALL sp_typeComplaint_update('$id','$nombre')";
         $update = $this->conn->query($this->sql);
         if($update){
             $titleMessage=array("msj"=>"success");
@@ -68,7 +68,7 @@ class APITypeUser {
     }
 
     public function delete($id){
-        $this->sql = "CALL sp_type_user_delete('$id')";
+        $this->sql = "CALL sp_typeComplaint_delete('$id')";
         $delete = $this->conn->query($this->sql);
         if($delete){
             $titleMessage=array("msj"=>"success");

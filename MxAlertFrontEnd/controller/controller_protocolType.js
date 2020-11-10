@@ -1,4 +1,4 @@
-const URL = 'http://localhost/mxalert/MxAlertBackEnd/controller/controller_typeUser.php';
+const URL = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_protocolType.php';
 var id = 0;
 var registros = [];
 const typeResponse = {

@@ -1,4 +1,5 @@
-const URL = 'http://localhost/mxalert/MxAlertBackEnd/controller/controller_typeUser.php';
+
+const URL = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_paymentMethod.php';
 var id = 0;
 var registros = [];
 const typeResponse = {
@@ -6,7 +7,7 @@ const typeResponse = {
 };
 
 const result = {
-    content: "typeUser"
+    content: "paymentMethod"
 };
 
 const typeMessage = {
@@ -16,15 +17,15 @@ const typeMessage = {
     },
     successAdd: {
         Alert: "alert alert-success",
-        Menssage: "Tipo de usuario agregado correctamente"
+        Menssage: "Metodo de pago agregado correctamente"
     },
     successEdit: {
         Alert: "alert alert-success",
-        Menssage: "Tipo de usuario editado correctamente"
+        Menssage: "Metodo de pago editado correctamente"
     },
     successDelete: {
         Alert: "alert alert-success",
-        Menssage: "Tipo de usuario eliminado correctamente"
+        Menssage: "Metodo de pago eliminado correctamente"
     },
     Error: {
         Alert: "alert alert-danger",
@@ -51,7 +52,7 @@ const typeUser = new Vue({
               .then(response => { return response.json() })
               .then(users => { registros = users })
               .then(() => {
-                var table = $('#myTableTypeUser').DataTable();
+                var table = $('#myTable').DataTable();
                 table.clear().draw();
                 let str = '';
                 for (let i = 0; i < registros[result.content].length; i++) {

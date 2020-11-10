@@ -1,5 +1,5 @@
 <?php
-class APITypeUser {
+class APIPlan {
     private $conn;
     private $db;
     private $sql;
@@ -17,20 +17,22 @@ class APITypeUser {
     }
 
      public function getData(){
-        $this->sql ="CALL sp_type_user_read();";
+        $this->sql ="CALL sp_plan_read();";
         $select = $this->conn->query($this->sql);
         if($select){
             $typeNote = array();
             while ($row = mysqli_fetch_array($select) ) {
                     $typeNote[] = array(
-                        'id'=> $row['id'],
-                        'nombre'=>$row['nombre']               
+                        'id'=> $row['clave'],
+                        'nombre'=>$row['nombre'],
+                        'descripcion'=>$row['descripcion'],
+                        'precio'=>$row['precio']               
                     );           
             }
-            $title=array("typeUser"=>$typeNote);
+            $title=array("plan"=>$typeNote);
             $json = json_encode($title,JSON_UNESCAPED_UNICODE);
         }else{
-            $title = array("typeUser"=>$typeNote);
+            $title = array("plan"=>$typeNote);
             $error []= array('error'=>'informacion no encontrada'); 
             $json = json_encode($error);
         }  
@@ -39,8 +41,8 @@ class APITypeUser {
         return $json;
     }
 
-    public function insert($nombre){
-        $this->sql = "CALL sp_type_user_create('$nombre')";
+    public function insert($nombre,$descripcion,$precio){
+        $this->sql = "CALL sp_plan_create('$nombre','$descripcion','$precio')";
         $insert = $this->conn->query($this->sql);
         if($insert){
             $titleMessage=array("msj"=>"success");
@@ -53,8 +55,8 @@ class APITypeUser {
         return $json;
     }
 
-    public function update($id, $nombre){
-        $this->sql = "CALL sp_type_user_update('$id','$nombre')";
+    public function update($id,$nombre,$descripcion,$precio){
+        $this->sql = "CALL sp_plan_update('$id','$nombre','$descripcion','$precio')";
         $update = $this->conn->query($this->sql);
         if($update){
             $titleMessage=array("msj"=>"success");
@@ -68,7 +70,7 @@ class APITypeUser {
     }
 
     public function delete($id){
-        $this->sql = "CALL sp_type_user_delete('$id')";
+        $this->sql = "CALL sp_plan_delete('$id')";
         $delete = $this->conn->query($this->sql);
         if($delete){
             $titleMessage=array("msj"=>"success");

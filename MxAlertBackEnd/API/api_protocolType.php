@@ -1,5 +1,5 @@
 <?php
-class APITypeUser {
+class APIProtocol {
     private $conn;
     private $db;
     private $sql;
@@ -17,20 +17,21 @@ class APITypeUser {
     }
 
      public function getData(){
-        $this->sql ="CALL sp_type_user_read();";
+        $this->sql ="CALL sp_protocolType_read();";
         $select = $this->conn->query($this->sql);
         if($select){
             $typeNote = array();
             while ($row = mysqli_fetch_array($select) ) {
                     $typeNote[] = array(
-                        'id'=> $row['id'],
-                        'nombre'=>$row['nombre']               
+                        'id'=> $row['protoc_idProtocolo'],
+                        'protocolo'=>$row['protocolo'],
+                        'tipo_denuncia'=>$row['tipo_denuncia']            
                     );           
             }
-            $title=array("typeUser"=>$typeNote);
+            $title=array("protocol"=>$typeNote);
             $json = json_encode($title,JSON_UNESCAPED_UNICODE);
         }else{
-            $title = array("typeUser"=>$typeNote);
+            $title = array("protocol"=>$typeNote);
             $error []= array('error'=>'informacion no encontrada'); 
             $json = json_encode($error);
         }  
@@ -39,8 +40,8 @@ class APITypeUser {
         return $json;
     }
 
-    public function insert($nombre){
-        $this->sql = "CALL sp_type_user_create('$nombre')";
+    public function insert($nombre,$tipoDenuncia){
+        $this->sql = "CALL sp_protocolType_create('$nombre','$tipoDenuncia')";
         $insert = $this->conn->query($this->sql);
         if($insert){
             $titleMessage=array("msj"=>"success");
@@ -53,8 +54,8 @@ class APITypeUser {
         return $json;
     }
 
-    public function update($id, $nombre){
-        $this->sql = "CALL sp_type_user_update('$id','$nombre')";
+    public function update($id,$nombre,$tipoDenuncia){
+        $this->sql = "CALL sp_protocolType_update('$id','$nombre','$tipoDenuncia')";
         $update = $this->conn->query($this->sql);
         if($update){
             $titleMessage=array("msj"=>"success");
@@ -68,7 +69,7 @@ class APITypeUser {
     }
 
     public function delete($id){
-        $this->sql = "CALL sp_type_user_delete('$id')";
+        $this->sql = "CALL sp_protocolType_delete('$id')";
         $delete = $this->conn->query($this->sql);
         if($delete){
             $titleMessage=array("msj"=>"success");
