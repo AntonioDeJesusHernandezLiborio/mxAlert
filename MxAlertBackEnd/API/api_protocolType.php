@@ -25,7 +25,8 @@ class APIProtocol {
                     $typeNote[] = array(
                         'id'=> $row['protoc_idProtocolo'],
                         'protocolo'=>$row['protocolo'],
-                        'tipo_denuncia'=>$row['tipo_denuncia']            
+                        'tipo_denuncia'=>$row['tipo_denuncia'],
+                        'id_denuncia' =>$row['id_denuncia']            
                     );           
             }
             $title=array("protocol"=>$typeNote);

@@ -8,7 +8,7 @@
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>Tipo protocolo</title>
+    <title>Protocolos</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -77,22 +77,17 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-md-6">
-                                                    <label for="nombre" class="col-form-label">Protocolo:</label>
-                                                    <input type="text" class="form-control" id="name-insert">
-                                                </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <label for="nombre" class="col-form-label">Seleccine la relacion con la denuncia:</label>
-                                                    <select v-model="select-insert" class="form-control" id="denuncia-insert">
-                                                        <option value="0" disabled selected>Seleccionar tipo de denuncia</option>
-                                                        <option v-for="docente in docentes" :value="docente">{{docente.nombre}}</option>
+                                                    <select v-model="denunciaSeleccioda" class="form-control" id="denuncia-insert" aria-placeholder="sad">
+                                                        <option v-for="denuncia in denuncias" :value="denuncia.id">{{denuncia.nombre}}</option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <label for="nombre" class="col-form-label">Descripción:</label>
-                                                    <input type="text" class="form-control" id="description-insert">
+                                                    <label for="nombre" class="col-form-label">Protocolo:</label>
+                                                    <input type="text" class="form-control" id="name-insert">
                                                 </div>
                                             </div>
                                         </div>
@@ -115,23 +110,19 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
-                                        <h4 class="modal-title" id="exampleModalLongTitle">Editar plan</h4>
+                                        <h4 class="modal-title" id="exampleModalLongTitle">Editar protocolo</h4>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="nombre" class="col-form-label">Nombre:</label>
+                                                <label for="nombre" class="col-form-label">Protocolo:</label>
                                                 <input type="text" class="form-control" id="name-update">
                                             </div>
                                             <div class="col-md-6">
-                                                <label for="nombre" class="col-form-label">Precio:</label>
-                                                <input type="number" class="form-control" id="price-update">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <label for="nombre" class="col-form-label">Descripción:</label>
-                                                <input type="text" class="form-control" id="description-update">
+                                                <label for="nombre" class="col-form-label">Seleccine la relacion con la denuncia:</label>
+                                                <select v-model="denunciaSeleccioda" class="form-control" id="denuncia-update">
+                                                    <option v-for="denuncia in denuncias" :value="denuncia.id">{{denuncia.nombre}}</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -155,7 +146,7 @@
                                         <h4 class="modal-title">Eliminar</h4>
                                     </div>
                                     <div class="modal-body">
-                                        <h5 class="text-center">¿Eliminar plan?</h5>
+                                        <h5 class="text-center">¿Eliminar protocolo?</h5>
                                         <div class="form-group">
                                             <label for="">Nombre:</label>
                                             <input class="form-control" type="text" id="name-delete" disabled>
@@ -189,7 +180,7 @@
     <script src="../src/js/vue.js"></script>
     <script src="../src/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../src/plugins/datatables/dataTables.bootstrap4.js"></script>
-    <!--<script src="../controller/controller_plan.js"></script> -->
+    <script src="../controller/controller_protocolType.js"></script>
     <script>
 
         $('#myTable').DataTable({

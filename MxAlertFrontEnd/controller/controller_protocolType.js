@@ -1,12 +1,15 @@
 const URL = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_protocolType.php';
+const URL_DENUNCIA = "http://localhost/mxAlert/MxAlertBackEnd/controller/controller_typeComplaint.php";
 var id = 0;
 var registros = [];
+
+
 const typeResponse = {
     success: "success"
 };
 
 const result = {
-    content: "typeUser"
+    content: "protocol",
 };
 
 const typeMessage = {
@@ -16,15 +19,15 @@ const typeMessage = {
     },
     successAdd: {
         Alert: "alert alert-success",
-        Menssage: "Tipo de usuario agregado correctamente"
+        Menssage: "Protocolo agregado correctamente"
     },
     successEdit: {
         Alert: "alert alert-success",
-        Menssage: "Tipo de usuario editado correctamente"
+        Menssage: "Protocolo editado correctamente"
     },
     successDelete: {
         Alert: "alert alert-success",
-        Menssage: "Tipo de usuario eliminado correctamente"
+        Menssage: "Protocolo eliminado correctamente"
     },
     Error: {
         Alert: "alert alert-danger",
@@ -37,38 +40,48 @@ const typeUser = new Vue({
     data: {
         mensajesA: null,
         tipoalertaA: null,
-        typerUsers: [],
-        elegido: {},
-        selected: 'Seleccione tipo usuario',
+        denuncias: [],
+        denunciaSeleccioda: {}
     },
     mounted: function () {
         this.showData()
+        this.showDataSelect()
     },
     methods: {
+
+        showDataSelect: function () {
+            axios.get(URL_DENUNCIA)
+                .then(function (response) {
+                    typeUser.denuncias = response.data.typeComplaint;
+                })
+        },
+
         showData() {
             window.itemC = new Array();
             fetch(URL)
-              .then(response => { return response.json() })
-              .then(users => { registros = users })
-              .then(() => {
-                var table = $('#myTableTypeUser').DataTable();
-                table.clear().draw();
-                let str = '';
-                for (let i = 0; i < registros[result.content].length; i++) {
-                  window.itemC[i] = registros[result.content][i];
-                  str += '<tr>';
-                  str += '<td>' + itemC[i].id + '</td>';
-                  str += '<td>' + itemC[i].nombre + '</td>';
-                  str += '<td> <button class="btn btn-success" data-toggle="modal" data-target="#edit-newTypeUser" onclick="typeUser.passDataEdit('+ i +')">Editar</button> <button class="btn btn-danger" data-toggle="modal"  data-target="#delete-typeUser" onclick="typeUser.passDataDelete('+i+')">Eliminar</button> </td>';
-                  str += '</tr>'
-                }
-                table.rows.add($(str)).draw();
-              })
+                .then(response => { return response.json() })
+                .then(protocolo => { registros = protocolo })
+                .then(() => {
+                    var table = $('#myTable').DataTable();
+                    table.clear().draw();
+                    let str = '';
+                    for (let i = 0; i < registros[result.content].length; i++) {
+                        window.itemC[i] = registros[result.content][i];
+                        str += '<tr>';
+                        str += '<td>' + itemC[i].id + '</td>';
+                        str += '<td>' + itemC[i].protocolo + '</td>';
+                        str += '<td>' + itemC[i].tipo_denuncia + '</td>';
+                        str += '<td> <button class="btn btn-success" data-toggle="modal" data-target="#edit-newTypeUser" onclick="typeUser.passDataEdit(' + i + ')">Editar</button> <button class="btn btn-danger" data-toggle="modal"  data-target="#delete-typeUser" onclick="typeUser.passDataDelete(' + i + ')">Eliminar</button> </td>';
+                        str += '</tr>'
+                    }
+                    table.rows.add($(str)).draw();
+                })
         },
 
         insert: function () {
             const datos = {
-                nombre: document.getElementById("name-insert").value
+                protocolo: document.getElementById("name-insert").value,
+                tipo: document.getElementById("denuncia-insert").value
             }
             if (typeUser.validateBoxes(datos)) {
                 typeUser.sendAlert(typeMessage.emptyFiel);
@@ -90,7 +103,8 @@ const typeUser = new Vue({
         edit: function () {
             const datos = {
                 id: id,
-                nombre: document.getElementById("name-update").value
+                protocolo: document.getElementById("name-update").value,
+                tipo: document.getElementById("denuncia-update").value
             }
             if (typeUser.validateBoxes(datos)) {
                 typeUser.sendAlert(typeMessage.emptyFiel);
@@ -131,12 +145,13 @@ const typeUser = new Vue({
         },
 
         passDataEdit(potition) {
-            id =  registros[result.content][potition].id;
-            document.getElementById("name-update").value = registros[result.content][potition].nombre;
+            id = registros[result.content][potition].id;
+            document.getElementById("name-update").value = registros[result.content][potition].protocolo;
+            document.getElementById("denuncia-update").value = registros[result.content][potition].id_denuncia;
         },
         passDataDelete(potition) {
             id = registros[result.content][potition].id;
-            document.getElementById("name-delete").value = registros[result.content][potition].nombre;
+            document.getElementById("name-delete").value = registros[result.content][potition].protocolo;
         },
 
         sendAlert(menssage) {
@@ -145,10 +160,7 @@ const typeUser = new Vue({
         },
 
         validateBoxes(datos) {
-            if (datos.nombre == 0) {
-                return true;
-            }
-            return false;
+            return datos.protocolo == 0 || datos.tipo == 0;
         },
         clearTextBox() {
             document.getElementById("name-insert").value = ''

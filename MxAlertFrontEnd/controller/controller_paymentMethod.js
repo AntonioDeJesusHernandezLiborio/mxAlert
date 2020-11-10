@@ -1,5 +1,6 @@
 
 const URL = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_paymentMethod.php';
+const URL_DENUNCIA = "http://localhost/mxAlert/MxAlertBackEnd/controller/controller_typeComplaint.php";
 var id = 0;
 var registros = [];
 const typeResponse = {
@@ -7,7 +8,8 @@ const typeResponse = {
 };
 
 const result = {
-    content: "paymentMethod"
+    content: "paymentMethod",
+    typerUsers: [],
 };
 
 const typeMessage = {
