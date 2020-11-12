@@ -36,7 +36,7 @@ const typeMessage = {
 }
 
 const typeUser = new Vue({
-    el: '#tableTypeUser',
+    el: '#TypeProtocol',
     data: {
         mensajesA: null,
         tipoalertaA: null,

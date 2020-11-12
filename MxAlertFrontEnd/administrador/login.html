@@ -1,89 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="Dashboard">
-	<meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>MX ALERT | Administrador</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Iniciar Sesion</title>
-
-	<!-- Bootstrap core CSS -->
-	<link href="../assets/css/bootstrap.css" rel="stylesheet">
-	<!--external css-->
-	<link href="../assets/css/font-awesome.css" rel="stylesheet" />
-
-	<!-- Custom styles for this template -->
-	<link href="../assets/css/style.css" rel="stylesheet">
-	<link href="../assets/css/style-responsive.css" rel="stylesheet">
-
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>MX</b>Alert</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Regístrese para iniciar su sesión</p>
 
-<body>
-	<div id="login-page">
-		<div class="container">
+      <form action="#" method="post">
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Correo electrónico">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Contraseña">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Recuérdame
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+      <div class="social-auth-links text-center mb-3">
+        <a href="index.html" class="btn btn-primary btn-block">
+          Iniciar Sesión
+        </a>
+      </div> 
+      <div class="social-auth-links text-center mb-3">
+        <p>- O -</p>
+        <a href="#" class="btn btn-block btn-primary">
+          <i class="fab fa-facebook mr-2"></i> Iniciar sesión con Facebook
+        </a>
+        <a href="#" class="btn btn-block btn-danger">
+          <i class="fab fa-google-plus mr-2"></i> Iniciar sesión con Google+
+        </a>
+      </div>
+      <!-- /.social-auth-links -->
 
-			<form class="form-login" action="index.html">
-				<h2 class="form-login-heading">INICIAR SESION</h2>
-				<div class="login-wrap">
-					<input type="text" class="form-control" placeholder="Usuario" autofocus>
-					<br>
-					<input type="password" class="form-control" placeholder="Contraseña">
-					<label class="checkbox">
-						<span class="pull-right">
-							<a data-toggle="modal" href="login.html#myModal"> ¿Olvido su contraseña?</a>
-						</span>
-					</label>
-					<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>
-						ENTRAR</button>
-					<hr>
-					<div class="registration">
-						No tienes una cuenta?<br />
-						<a class="" href="#">
-							¡Create una cuenta!
-						</a>
-					</div>
-				</div>
+      <p class="mb-1">
+        <a href="forgot-password.html">Olvidé mi contraseña</a>
+      </p>
+      <p class="mb-0">
+        <a href="register.html" class="text-center">Registrar una nueva membresía</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
 
-				<!-- Modal -->
-				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal"
-					class="modal fade">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"
-									aria-hidden="true">&times;</button>
-								<h4 class="modal-title">Olvido su contraseña?</h4>
-							</div>
-							<div class="modal-body">
-								<p>Ingrese su correo electronico para enviarle su nueva contraseña.</p>
-								<input type="text" name="email" placeholder="Correo electronico" autocomplete="off"
-									class="form-control placeholder-no-fix">
-							</div>
-							<div class="modal-footer">
-								<button data-dismiss="modal" class="btn btn-default" type="button">Cancelar</button>
-								<button class="btn btn-theme" type="button">Enviar Correo</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- modal -->
-			</form>
-		</div>
-	</div>
+<!-- jQuery -->
+<script src="../assets/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../assets/js/adminlte.min.js"></script>
 
-	<!-- js placed at the end of the document so the pages load faster -->
-	<script src="../assets/js/jquery.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-
-	<!--BACKSTRETCH-->
-	<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-	<script type="text/javascript" src="../assets/js/jquery.backstretch.min.js"></script>
-	<script>
-		$.backstretch("../assets/img/login-bg.jpg", { speed: 500 });
-	</script>
 </body>
-
 </html>
