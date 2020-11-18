@@ -26,13 +26,13 @@
       <a href="#"><b>MX</b>Alert</a>
     </div>
     <!-- /.login-logo -->
-    <div class="card">
+    <div class="card" id="login">
       <div class="card-body login-card-body">
         <p class="login-box-msg">Regístrese para iniciar su sesión</p>
 
         <form action="#" method="post">
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Correo electrónico">
+            <input type="text" class="form-control" id="username" placeholder="Usuario">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Contraseña">
+            <input type="password" class="form-control" id="password" placeholder="Contraseña">
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-lock"></span>
@@ -60,9 +60,12 @@
           </div>
         </form>
         <div class="social-auth-links text-center mb-3">
-          <a href="index.html" class="btn btn-primary btn-block">
-            Iniciar Sesión
-          </a>
+          <div class="col-md-12 text-center">
+            <button class="btn btn-primary btn-block" @click="login()"></i>Iniciar Sesion</button>
+          </div>
+        </div>
+        <div v-bind:class="tipoalertaA" role="alert">
+          {{mensajesA}}
         </div>
         <div class="social-auth-links text-center mb-3">
           <p>- O -</p>
@@ -93,6 +96,9 @@
   <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../assets/js/adminlte.min.js"></script>
+  <script src="../assets/js/axios.js"></script>
+  <script src="../assets/js/vue.js"></script>
+  <script src="../controller/controller_login.js"></script>
 
 </body>
 
