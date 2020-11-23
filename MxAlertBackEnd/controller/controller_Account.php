@@ -17,9 +17,9 @@ switch($method){
         break;
     case 'PUT':
             $data = json_decode(file_get_contents("php://input"), true);
-            echo $typeUser->update($data['id'], $data['nombre'],$data['descripcion'],$data['precio']);
+            echo $typeUser->update($data['id'], $data['nivelusuario']);
         break;
     case 'DELETE':
-            echo $typeUser->delete($_REQUEST['id']);
+            echo $typeUser->delete($_REQUEST['id'],$_REQUEST['razon']);
         break;
 }

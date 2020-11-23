@@ -17,22 +17,27 @@ class APIAccount {
     }
 
      public function getData(){
-        $this->sql ="CALL sp_plan_read();";
+        $this->sql ="CALL sp_accounts_read();";
         $select = $this->conn->query($this->sql);
         if($select){
             $typeNote = array();
             while ($row = mysqli_fetch_array($select) ) {
                     $typeNote[] = array(
-                        'id'=> $row['clave'],
+                        'id'=> $row['cuent_IdCuenta'],
                         'nombre'=>$row['nombre'],
-                        'descripcion'=>$row['descripcion'],
-                        'precio'=>$row['precio']               
+                        'telefono'=>$row['telefono'],
+                        'usuario'=>$row['usuario'],
+                        'estado'=>$row['estado'],
+                        'tipo_cuenta'=>$row['tipoUsu_nombre'],
+                        'fecha'=>$row['fecha'] ,
+                        'id_tipo_cuenta'=>$row['cuent_FK_tipUsu_idUsuario'],
+                        'cantidad_denuncias'=>$row['cantidadDenuncia']           
                     );           
             }
-            $title=array("plan"=>$typeNote);
+            $title=array("accounts"=>$typeNote);
             $json = json_encode($title,JSON_UNESCAPED_UNICODE);
         }else{
-            $title = array("plan"=>$typeNote);
+            $title = array("accounts"=>$typeNote);
             $error []= array('error'=>'informacion no encontrada'); 
             $json = json_encode($error);
         }  
@@ -55,8 +60,8 @@ class APIAccount {
         return $json;
     }
 
-    public function update($id,$nombre,$descripcion,$precio){
-        $this->sql = "CALL sp_plan_update('$id','$nombre','$descripcion','$precio')";
+    public function update($id,$nivelusuario){
+        $this->sql = "CALL sp_accounts_update('$id','$nivelusuario')";
         $update = $this->conn->query($this->sql);
         if($update){
             $titleMessage=array("msj"=>"success");
@@ -69,8 +74,8 @@ class APIAccount {
         return $json;
     }
 
-    public function delete($id){
-        $this->sql = "CALL sp_plan_delete('$id')";
+    public function delete($id,$razon){
+        $this->sql = "CALL sp_accounts_locked('$id','$razon')";
         $delete = $this->conn->query($this->sql);
         if($delete){
             $titleMessage=array("msj"=>"success");

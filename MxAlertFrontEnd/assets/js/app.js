@@ -6,3 +6,9 @@ function cargarSectionPages(){
 }
 cargarSectionPages();
 
+function cerrarSesion() {
+    localStorage.removeItem("tipo");
+    localStorage.removeItem("username");
+    localStorage.removeItem("id");
+    window.location.href = 'http://localhost/mxAlert/MxAlertFrontEnd/administrador/login.html';
+}

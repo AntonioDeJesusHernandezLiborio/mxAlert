@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../assets/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -32,7 +33,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Crear cuenta</h1>
+                            <h1 class="m-0 text-dark">Publicar denuncia</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -50,6 +51,15 @@
                                 {{mensajesA}}
                             </div>
                             <div class="container">
+
+
+                                <input id="file" type="file" />
+                                    <hr>
+                                <div id="preview" height="30px" width="30px" >  </div>
+
+
+
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label for="nombre" class="col-form-label">Nombre:</label>
@@ -81,7 +91,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                   
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-10">
@@ -90,7 +100,8 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label for="nombre" class="col-form-label">Verificar</label>
-                                        <button class="btn btn-light"> <i class="far fa-check-circle"></i> Check </button>
+                                        <button class="btn btn-light"> <i class="far fa-check-circle"></i> Check
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -107,7 +118,8 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <label>Seleccione rol del la cuenta</label>
-                                        <select v-model="rolSeleccionado" class="form-control" id="denuncia-insert" aria-placeholder="Seleecione rol">
+                                        <select v-model="rolSeleccionado" class="form-control" id="denuncia-insert"
+                                            aria-placeholder="Seleecione rol">
                                             <option v-for="rol in rols" :value="rol.id">{{rol.nombre}}</option>
                                         </select>
                                     </div>
@@ -116,7 +128,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button class="btn btn-primary" @click="insert()"> <i class="fas fa-save"></i> Guardar cuenta</button>
+                                    <button class="btn btn-primary" @click="insert()"> <i class="fas fa-save"></i>
+                                        Guardar cuenta</button>
                                 </div>
                             </div>
                             <br>
@@ -147,9 +160,9 @@
     <script src="../assets/js/adminlte.js"></script>
     <script src="../assets/js/axios.js"></script>
     <script src="../assets/js/vue.js"></script>
-    <script src="../assets/js/validate_pages_admin.js"></script>
     <script src="../assets/js/app.js"></script>
-    <script src="../controller/controller_account.js"></script>
+    <script src="../controller/controller_denuncias.js"></script>
+
 </body>
 
 </html>

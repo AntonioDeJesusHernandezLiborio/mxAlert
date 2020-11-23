@@ -31,7 +31,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Tipo Usuarios</h1>
+                            <h1 class="m-0 text-dark">Cuentas</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
@@ -47,86 +47,85 @@
                     <section class="wrapper">
                         <div class="mx-width-1075 container-fluid" id="TypeUser">
                             <div class="mycards">
-
-
                                 <!--Mycard-->
                                 <div class="row">
-                                    <div class="offset-2 col-md-8 offset-2">
+                                    <div class="offset-1 col-md-10 offset-1">
                                         <div class="card">
                                             <div class="card-header">
-                                                <button class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#new-typeUser">  <i class="fas fa-plus "></i>Agregar</button>
+                                                <h5></h5>
                                             </div>
-                                            <div class="container">
-                                                <br>
-                                                <div v-bind:class="tipoalertaA" role="alert">
-                                                    {{mensajesA}}
-                                                </div>
-                                                <!-- Tabla de roles -->
-                                                <div class="card-body">
-                                                    <table id="myTableTypeUser" class="table table-hover ">
-                                                        <thead class="thead-dark">
-                                                            <tr>
-                                                                <th scope="col">#</th>
-                                                                <th scope="col">Nombre</th>
-                                                                <th scope="col">Accion</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbody_product">
-    
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+
+                                            <br>
+                                        
+                                            <div v-bind:class="tipoalertaA" role="alert" class="text-center">
+                                                {{mensajesA}}
+                                            </div>
+                                            <!-- Tabla de roles -->
+                                            <div class="card-body">
+                                                <table id="myTableAccounts" class="table table-hover ">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th scope="col">#</th>
+                                                            <th scope="col">Nombre Titular</th>
+                                                            <th scope="col">Teléfono</th>
+                                                            <th scope="col">Usuario</th>
+                                                            <th scope="col">Tipo Cuenta</th>
+                                                            <th scope="col">Fecha Creacion</th>
+                                                            <th scope="col">Estado de cuenta</th>
+                                                            <th scope="col"># de Denuncias</th>
+                                                            <th scope="col">Editar</th>
+                                                            <th scope="col">Bloquear</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbody_product">
+
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <!--- MODALES -->
-                                <!--- MODAL NUEVO -->
-                                <div id="nuevoRol">
-                                    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
-                                        id="new-typeUser" class="modal fade">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title" id="exampleModalLongTitle">Nuevo tipo de
-                                                        usuario
-                                                    </h4>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body  text-center">
-                                                    <label for="nombre" class="col-form-label">Nombre:</label>
-                                                    <input type="text" class="form-control" id="name-insert">
 
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                                        @click="insert()">Guardar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <!--- MODAL EDITAR -->
                                 <div class="modal fade" id="edit-newTypeUser" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title" id="exampleModalLongTitle">Editar tipo usuario
+                                                <h4 class="modal-title" id="exampleModalLongTitle">Editar Cuenta
                                                 </h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <div class="modal-body  text-center">
-                                                <label for="nombre" class="col-form-label">Nombre:</label>
-                                                <input type="text" class="form-control" id="name-update">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <label for="nombre" class="col-form-label">Titular:</label>
+                                                        <input class="form-control" type="tel" id="name-update"
+                                                            placeholder="Nombre titular" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="row">    
+                                                    <div class="col-md-12">
+                                                        <label for="nombre" class="col-form-label">Usuario:</label>
+                                                        <input class="form-control" type="tel" id="user-update"
+                                                            placeholder="Usuario" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="row">    
+                                                    <div class="col-md-12">
+                                                        <label for="nombre" class="col-form-label">Tipo Usuario:</label>
+                                                        <select v-model="tipocuentaSeleccioda" class="form-control"
+                                                            id="nivelUsuario-edit">
+                                                            <option v-for="tipocuenta in tipocuentas" :value="tipocuenta.id">
+                                                                {{tipocuenta.nombre}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>                                                
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-primary" data-dismiss="modal"
@@ -136,30 +135,31 @@
                                     </div>
                                 </div>
 
+
+
                                 <!-- MODAL ELIMINAR-->
                                 <div class="modal fade bd-example-modal-sm" id="delete-typeUser" tabindex="-1"
                                     role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog modal-sm" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Eliminar</h4>
+                                                <h4 class="modal-title">Bloquear cuenta</h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body  text-center">
-                                                <h5 class="text-center">¿Eliminar tipo usuario?</h5>
                                                 <div class="form-group">
-                                                    <label for="">Nombre:</label>
-                                                    <input class="form-control" type="text" id="name-delete" disabled>
+                                                    <label for="">Razón de bloqueo:</label>
+                                                    <input class="form-control" type="text" id="razon-delete">
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">NO</button>
+                                                    data-dismiss="modal">Cancelar</button>
                                                 <button type="button" class="btn btn-danger" data-dismiss="modal"
-                                                    @click="deleteType()">SI</button>
+                                                    @click="deleteType()">Bloquear</button>
                                             </div>
                                         </div>
                                     </div>
@@ -188,11 +188,10 @@
     <script src="../assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../assets/plugins/datatables/dataTables.bootstrap4.js"></script>
     <script src="../assets/js/validate_pages_admin.js"></script>
-    <script src="../controller/controller_typeUser.js"></script>
     <script src="../assets/js/app.js"></script>
+    <script src="../controller/controller_accounts.js"></script>
     <script>
-
-        $('#myTableTypeUser').DataTable({
+        $('#myTableAccounts').DataTable({
             "language": {
                 "url": "../assets/plugins/datatables/Spanish.json"
             },

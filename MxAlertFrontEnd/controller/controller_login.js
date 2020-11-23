@@ -2,7 +2,7 @@ const URL = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_crede
 
 const typeResponse = {
     success: "success",
-    non_existent:"Usuario inexistente"
+    non_existent: "Usuario inexistente"
 };
 
 const status = {
@@ -42,7 +42,6 @@ const login = new Vue({
         tipoalertaA: null
     },
     methods: {
-
         login: function () {
             const datos = {
                 usuario: document.getElementById("username").value,
@@ -51,33 +50,33 @@ const login = new Vue({
             if (login.validateBoxes(datos)) {
                 login.sendAlert(typeMessage.emptyFiel);
                 return false;
-            }else {
+            } else {
                 axios.post(URL, datos)
-                .then(function (response) {
-                     response.data.user[0].status != typeResponse.non_existent ? login.validateCredentials(response.data.user[0]) : login.sendAlert(typeMessage.empy);
-                })
+                    .then(function (response) {
+                        response.data.user[0].status != typeResponse.non_existent ? login.validateCredentials(response.data.user[0]) : login.sendAlert(typeMessage.empy);
+                    })
             }
         },
 
-        validateCredentials(user){
-            if(user == null){
+        validateCredentials(user) {
+            if (user == null) {
                 login.sendAlert(typeMessage.Error)
-            }else{
+            } else {
                 user.status == status.unlocked ? login.locationUser(user) : login.sendAlert(typeMessage.locked);
             }
         },
 
-        locationUser(user){
+        locationUser(user) {
             let user_type = user.tipo_usuario;
-            localStorage.setItem("id",user.Id);
-            localStorage.setItem("username",user.nombre);
-            localStorage.setItem("tipo",user.tipo_usuario);
-            switch(user_type){
+            localStorage.setItem("id", user.Id);
+            localStorage.setItem("username", user.nombre);
+            localStorage.setItem("tipo", user.tipo_usuario);
+            switch (user_type) {
                 case typeUser.Administration:
-                        window.location.href = '../administrador/administracion.html';
+                    window.location.href = '../administrador/index.html';
                     break;
                 case typeUser.Premiun:
-                        window.location.href = '../administrador/premium.html';
+                    window.location.href = '../clientes/index.html';
                     break;
             }
         },
@@ -91,7 +90,7 @@ const login = new Vue({
         },
         clearTextBox() {
             document.getElementById("username").value = ''
-            document.getElementById("password").value= ''
+            document.getElementById("password").value = ''
         }
     }
 });
