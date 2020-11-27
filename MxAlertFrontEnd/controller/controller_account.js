@@ -1,4 +1,4 @@
-createAccount
+
 const URL = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_Account.php';
 const URL_userType = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_typeUser.php';
 

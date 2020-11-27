@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>MX ALERT | Administrador</title>
+    <title>MX ALERT | Cliente</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -51,80 +51,56 @@
                                 {{mensajesA}}
                             </div>
                             <div class="container">
+                                <form action="" id="frmAdd">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nombre" class="col-form-label">Descripción:</label>
+                                            <input type="text" class="form-control" id="name-insert" name="descripcion"
+                                                placeholder="Descripción">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="nombre" class="col-form-label">Estado:</label>
+                                            <input type="text" class="form-control" id="ap-insert" 
+                                                placeholder="Estado" name="estado">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="nombre" class="col-form-label">Municipio:</label>
+                                            <input type="text" class="form-control" id="am-insert"
+                                                placeholder="Municipio" name="municipio">
+                                        </div>
+                                    </div>
+                        
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nombre" class="col-form-label">Colonia:</label>
+                                            <input type="text" class="form-control" id="am-insert"
+                                                placeholder="Colonia"  name="colonia">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nombre" class="col-form-label">Calle:</label>
+                                            <input type="text" class="form-control" id="am-insert"
+                                                placeholder="Calle"  name="calle">
+                                        </div>
+                                    </div>
 
-
-                                <input id="file" type="file" />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Seleccione tipo de denuncia</label>
+                                            <select v-model="denunciaSeleccioda" class="form-control" id="denuncia-insert"
+                                                aria-placeholder="Seleecione tipo denuncia" name="clave_denuncia">
+                                                <option v-for="denuncia in denuncias" :value="denuncia.id">{{denuncia.nombre}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div id="preview"> </div>
+                                    <input id="file" type="file"  name="file-imagen" onchange="typeUser.abrirImagen()"/>
                                     <hr>
-                                <div id="preview" height="30px" width="30px" >  </div>
-
-
-
-
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label for="nombre" class="col-form-label">Nombre:</label>
-                                        <input type="text" class="form-control" id="name-insert" placeholder="Nombre">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="nombre" class="col-form-label">Apellido Paterno:</label>
-                                        <input type="text" class="form-control" id="ap-insert"
-                                            placeholder="Apellido paterno">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="nombre" class="col-form-label">Apellido Materno:</label>
-                                        <input type="text" class="form-control" id="am-insert"
-                                            placeholder="Apellido materno">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <label for="nombre" class="col-form-label">Domicilio:</label>
-                                        <input type="text" class="form-control" id="direccion-insert"
-                                            placeholder="Direccion">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label for="nombre" class="col-form-label">Telefono:</label>
-                                        <input class="form-control" type="tel" id="phone-insert"
-                                            placeholder="1-(555)-555-5555">
-                                    </div>
-                                </div>
-                                <div class="row">
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <label for="nombre" class="col-form-label">Usuario:</label>
-                                        <input class="form-control" type="tel" id="user-insert" placeholder="Usuario">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <label for="nombre" class="col-form-label">Verificar</label>
-                                        <button class="btn btn-light"> <i class="far fa-check-circle"></i> Check
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="nombre" class="col-form-label">Contraseña:</label>
-                                        <input class="form-control" type="password" id="password-insert">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="nombre" class="col-form-label">Vuelve a escribir la
-                                            contraseña:</label>
-                                        <input class="form-control" type="password" id="password-insert-repie">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label>Seleccione rol del la cuenta</label>
-                                        <select v-model="rolSeleccionado" class="form-control" id="denuncia-insert"
-                                            aria-placeholder="Seleecione rol">
-                                            <option v-for="rol in rols" :value="rol.id">{{rol.nombre}}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <br>
+                                </form>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 text-center">
