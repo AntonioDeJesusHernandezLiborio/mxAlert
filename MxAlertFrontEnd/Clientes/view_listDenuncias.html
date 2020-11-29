@@ -33,52 +33,38 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0 text-dark">Publicar denuncia</h1>
+                            <h1 class="m-0 text-dark">Listado de denuncias</h1>
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->
             </div>
 
-            <div class="mycards" id="createAccount">
-
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://free-time-katas.github.io/img/novedades-bootstrap-4-beta.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div id="createAccount">
+               
+                <div v-bind:class="tipoalertaA" role="alert" class="text-center">
+                    {{mensajesA}}
+                </div>
+                
+                <div >
+                    <div class="row row-cols-4">
+                        <div class="card" v-for="denuncia in Listdenuncias">
+                            <div class="card-body">
+                                <div class="card" >
+                                    <img class="card-img-top"
+                                        v-bind:src="'http://localhost/mxAlert/MxAlertBackEnd/img/'+denuncia.foto"
+                                        alt="Imagen denuncia" height="300" width="100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{denuncia.estado}}</h5>
+                                        <p class="card-text">{{denuncia.descripcion}}</p>
+                                        <a href="#" class="btn btn-primary">Más Detalles</a>
+                                        <a href="#" class="btn btn-default">Desactivar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://free-time-katas.github.io/img/novedades-bootstrap-4-beta.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://free-time-katas.github.io/img/novedades-bootstrap-4-beta.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://free-time-katas.github.io/img/novedades-bootstrap-4-beta.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
+            
             </div>
         </div>
     </div>
@@ -104,7 +90,7 @@
     <script src="../assets/js/axios.js"></script>
     <script src="../assets/js/vue.js"></script>
     <script src="../assets/js/app.js"></script>
-    <script src="../controller/controller_denuncias.js"></script>
+    <script src="../controller/controller_ListDenuncias.js"></script>
 
 </body>
 

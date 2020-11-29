@@ -40,12 +40,30 @@ const typeUser = new Vue({
         mensajesA: null,
         tipoalertaA: null,
         denuncias: [],
-        denunciaSeleccioda: {}
+        denunciaSeleccioda: {},
+        Listdenuncias: []
     },
     mounted: function () {
         this.showDataSelect()
+        this.show()
     },
     methods: {
+        show: function () {
+            var dataSend = new FormData();
+            dataSend.append("option", "getData");
+            axios({
+                method: 'POST',
+                url: URL,
+                data: dataSend,
+                headers: { 'Content-Type': 'multipart/form-data' }
+            })
+                .then(function (response) {
+                    console.log(response);
+                    typeUser.Listdenuncias = response.data.denuncias;
+                })
+        },
+
+
 
         showDataSelect: function () {
             axios.get(URL_DENUNCIA)

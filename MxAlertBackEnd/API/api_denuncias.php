@@ -17,27 +17,27 @@ class APIDenuncias {
     }
 
      public function getData(){
-        $this->sql ="CALL sp_accounts_read();";
+        $this->sql ="CALL sp_denuncia_read();";
         $select = $this->conn->query($this->sql);
         if($select){
             $typeNote = array();
             while ($row = mysqli_fetch_array($select) ) {
                     $typeNote[] = array(
-                        'id'=> $row['cuent_IdCuenta'],
-                        'nombre'=>$row['nombre'],
-                        'telefono'=>$row['telefono'],
-                        'usuario'=>$row['usuario'],
+                        'id'=> $row['id'],
+                        'descripcion'=>$row['descripcion'],
+                        'fecha'=>$row['fecha'],
+                        'hora'=>$row['hora'],
                         'estado'=>$row['estado'],
-                        'tipo_cuenta'=>$row['tipoUsu_nombre'],
-                        'fecha'=>$row['fecha'] ,
-                        'id_tipo_cuenta'=>$row['cuent_FK_tipUsu_idUsuario'],
-                        'cantidad_denuncias'=>$row['cantidadDenuncia']           
+                        'municipio'=>$row['municipio'],
+                        'colonia'=>$row['colonia'] ,
+                        'calle'=>$row['calle'],
+                        'foto'=>$row['foto']       
                     );           
             }
-            $title=array("accounts"=>$typeNote);
+            $title=array("denuncias"=>$typeNote);
             $json = json_encode($title,JSON_UNESCAPED_UNICODE);
         }else{
-            $title = array("accounts"=>$typeNote);
+            $title = array("denuncias"=>$typeNote);
             $error []= array('error'=>'informacion no encontrada'); 
             $json = json_encode($error);
         }  
