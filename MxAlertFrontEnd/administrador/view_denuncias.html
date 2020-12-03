@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MX ALERT | Cliente</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="../assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+
+        <div id="header"></div>
+        <div id="sidebar"></div>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">Publicar denuncia</h1>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+
+            <div class="mycards" id="createAccount">
+                <!--Mycard-->
+                <div class="row">
+                    <div class="offset-3 col-md-6 offset-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Crear nueva cuenta</h5>
+                            </div>
+                            <div v-bind:class="tipoalertaA" role="alert">
+                                {{mensajesA}}
+                            </div>
+                            <div class="container">
+                                <form action="" id="frmAdd">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nombre" class="col-form-label">Descripción:</label>
+                                            <input type="text" class="form-control" id="name-insert" name="descripcion"
+                                                placeholder="Descripción">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="nombre" class="col-form-label">Estado:</label>
+                                            <input type="text" class="form-control" id="ap-insert" 
+                                                placeholder="Estado" name="estado">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="nombre" class="col-form-label">Municipio:</label>
+                                            <input type="text" class="form-control" id="am-insert"
+                                                placeholder="Municipio" name="municipio">
+                                        </div>
+                                    </div>
+                        
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nombre" class="col-form-label">Colonia:</label>
+                                            <input type="text" class="form-control" id="am-insert"
+                                                placeholder="Colonia"  name="colonia">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nombre" class="col-form-label">Calle:</label>
+                                            <input type="text" class="form-control" id="am-insert"
+                                                placeholder="Calle"  name="calle">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Seleccione tipo de denuncia</label>
+                                            <select v-model="denunciaSeleccioda" class="form-control" id="denuncia-insert"
+                                                aria-placeholder="Seleecione tipo denuncia" name="clave_denuncia">
+                                                <option v-for="denuncia in denuncias" :value="denuncia.id">{{denuncia.nombre}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div id="preview"> </div>
+                                    <input id="file" type="file"  name="file-imagen" onchange="typeUser.abrirImagen()"/>
+                                    <hr>
+                                </form>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button class="btn btn-primary" @click="insert()"> <i class="fas fa-save"></i>
+                                        Guardar cuenta</button>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.content-wrapper -->
+        <div id="footer"></div>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../assets/js/adminlte.js"></script>
+    <script src="../assets/js/axios.js"></script>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../controller/controller_denuncias.js"></script>
+
+</body>
+
+</html>

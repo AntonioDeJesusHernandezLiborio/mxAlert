@@ -17,7 +17,8 @@ class APICredentials {
     }
 
     public function login($username,$password){
-        $this->sql ="CALL sp_login('$username','$password');";
+        $clave=md5($password);
+        $this->sql ="CALL sp_login('$username','$clave');";
         $select = $this->conn->query($this->sql);
 
         $resultado = mysqli_num_rows($select);

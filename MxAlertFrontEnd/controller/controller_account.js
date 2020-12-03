@@ -1,6 +1,7 @@
 
 const URL = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_Account.php';
 const URL_userType = 'http://localhost/mxAlert/MxAlertBackEnd/controller/controller_typeUser.php';
+const URL_Registrer = "http://localhost/mxAlert/MxAlertBackEnd/controller/controller_registrer.php";
 
 const typeResponse = {
     success: "success"
@@ -79,6 +80,34 @@ const account = new Vue({
                         if (response.data.msj == typeResponse.success) {
                             account.clearTextBox()
                             account.sendAlert(typeMessage.successAdd);
+                        } else {
+                            account.sendAlert(typeMessage.Error);
+                        }
+                    })
+            }
+        },
+        newUser: function () {
+            const datos = {
+                nombre: document.getElementById("name-insert").value,
+                ap: document.getElementById("ap-insert").value,
+                am: document.getElementById("am-insert").value,
+                direccion: document.getElementById("direccion-insert").value,
+                telefono: document.getElementById("phone-insert").value,
+                usuario: document.getElementById("user-insert").value,
+                contraseña: document.getElementById("password-insert").value,
+                contraseña_rep: document.getElementById("password-insert-repie").value
+            }
+            if (account.validateBoxes(datos)) {
+                account.sendAlert(typeMessage.emptyFiel);
+                return false;
+            } else if (account.validatePassword(datos)) {
+                account.sendAlert(typeMessage.password);
+                return false;
+            } else {
+                axios.post(URL_Registrer, datos)
+                    .then(function (response) {
+                        if (response.data.msj == typeResponse.success) {
+                            window.location.href = 'http://localhost/mxAlert/MxAlertFrontEnd/administrador/login.html';
                         } else {
                             account.sendAlert(typeMessage.Error);
                         }

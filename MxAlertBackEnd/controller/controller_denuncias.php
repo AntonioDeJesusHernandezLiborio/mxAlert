@@ -19,12 +19,10 @@ switch($option){
             echo $typeUser->insert($_POST['descripcion'],$foto,$filename,$surcepat,$_POST['estado'],$_POST['municipio'],$_POST['colonia'],$_POST['calle'],$_POST['clave_denuncia'],$_POST['clave_cuenta']);
         break;
     case 'update':
-            $foto=$_FILES['file-imagen'];
-            $filename=$_FILES["file-imagen"]["name"];
-            $surcepat=$_FILES["file-imagen"]["tmp_name"];
-            echo $typeUser->update($_POST['id'],$_POST['descripcion'],$foto,$filename,$surcepat,$_POST['estado'],$_POST['municipio'],$_POST['colonia'],$_POST['calle'],$_POST['clave_denuncia'],$_POST['clave_cuenta']);
+            echo $typeUser->update($_POST['id'],$_POST['clave_cuenta']);
+        break;
     case 'delete':
-            echo $product->deleteData($_POST['id']);
+            echo 'SIN METODO';//$typeUser->delete($_POST['id']);
         break;
 
 }

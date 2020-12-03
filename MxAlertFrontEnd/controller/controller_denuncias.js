@@ -88,7 +88,7 @@ const typeUser = new Vue({
                     .then(function (response) {
                         if (response.data.msj == typeResponse.success) {
                             typeUser.clearTextBox()
-                            typeUser.sendAlert(typeMessage.successEdit);
+                            typeUser.sendAlert(typeMessage.successAdd);
                         } else {
                             typeUser.sendAlert(typeMessage.Error);
                         }
@@ -100,25 +100,30 @@ const typeUser = new Vue({
         },
 
         edit: function () {
-            const datos = {
-                id: id,
-                protocolo: document.getElementById("name-update").value,
-                tipo: document.getElementById("denuncia-update").value
-            }
-            if (typeUser.validateBoxes(datos)) {
+            var dataSend = new FormData();
+            dataSend.append("clave_cuenta", localStorage.getItem("id"));
+            dataSend.append("option", "update");
+            dataSend.append("id", "update");
+            if (typeUser.validateBoxes(dataSend)) {
                 typeUser.sendAlert(typeMessage.emptyFiel);
-                return false;
             } else {
-                axios.put(URL, datos)
+                axios({
+                    method: 'POST',
+                    url: URL,
+                    data: dataSend,
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                })
                     .then(function (response) {
                         if (response.data.msj == typeResponse.success) {
-                            typeUser.showData()
                             typeUser.clearTextBox()
                             typeUser.sendAlert(typeMessage.successEdit);
                         } else {
                             typeUser.sendAlert(typeMessage.Error);
                         }
                     })
+                    .catch(function (response) {
+                        console.log(response);
+                    });
             }
         },
         deleteType: function () {
@@ -143,10 +148,9 @@ const typeUser = new Vue({
             }
         },
 
-        passDataEdit(potition) {
-            id = registros[result.content][potition].id;
-            document.getElementById("name-update").value = registros[result.content][potition].protocolo;
-            document.getElementById("denuncia-update").value = registros[result.content][potition].id_denuncia;
+        passDataEdit(denuncia) {
+            console.log(denuncia);
+            document.getElementById("name-desactivar").value = denuncia.id;
         },
         passDataDelete(potition) {
             id = registros[result.content][potition].id;

@@ -47,7 +47,8 @@ class APIAccount {
     }
 
     public function insert($nombre,$ap,$am,$direccion,$telefono,$usuario,$contraseña,$rol){
-        $this->sql = "CALL sp_account_create('$nombre','$ap','$am','$direccion','$telefono','$usuario','$contraseña','$rol')";
+        $clave=md5($contraseña);
+        $this->sql = "CALL sp_account_create('$nombre','$ap','$am','$direccion','$telefono','$usuario','$clave','$rol')";
         $insert = $this->conn->query($this->sql);
         if($insert){
             $titleMessage=array("msj"=>"success");

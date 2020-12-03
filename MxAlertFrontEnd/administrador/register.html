@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>MX ALERT | Administrador</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../assets/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="../assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../assets/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+
+    <div class="mycards" id="createAccount">
+        <!--Mycard-->
+        <div class="row">
+            <div class="offset-2 col-md-8 offset-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Crear nueva cuenta</h5>
+                    </div>
+                    <div v-bind:class="tipoalertaA" role="alert">
+                        {{mensajesA}}
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="nombre" class="col-form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="name-insert" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="nombre" class="col-form-label">Apellido Paterno:</label>
+                                <input type="text" class="form-control" id="ap-insert" placeholder="Apellido paterno">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nombre" class="col-form-label">Apellido Materno:</label>
+                                <input type="text" class="form-control" id="am-insert" placeholder="Apellido materno">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <label for="nombre" class="col-form-label">Domicilio:</label>
+                                <input type="text" class="form-control" id="direccion-insert" placeholder="Direccion">
+                            </div>
+                            <div class="col-md-4">
+                                <label for="nombre" class="col-form-label">Telefono:</label>
+                                <input class="form-control" type="tel" id="phone-insert" placeholder="1-(555)-555-5555">
+                            </div>
+                        </div>
+                        <div class="row">
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <label for="nombre" class="col-form-label">Usuario:</label>
+                                <input class="form-control" type="tel" id="user-insert" placeholder="Usuario">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="nombre" class="col-form-label">Contraseña:</label>
+                                <input class="form-control" type="password" id="password-insert">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nombre" class="col-form-label">Vuelve a escribir la
+                                    contraseña:</label>
+                                <input class="form-control" type="password" id="password-insert-repie">
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a class="btn btn-default" href="../index.html">Cancelar</a>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-primary" @click="newUser()"> <i class="fas fa-save"></i>Crear cuenta</button>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery -->
+    <script src="../assets/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../assets/js/adminlte.js"></script>
+    <script src="../assets/js/axios.js"></script>
+    <script src="../assets/js/vue.js"></script>
+    <script src="../controller/controller_account.js"></script>
+</body>
+
+</html>

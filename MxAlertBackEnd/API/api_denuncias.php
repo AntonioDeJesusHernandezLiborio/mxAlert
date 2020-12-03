@@ -69,8 +69,8 @@ class APIDenuncias {
         return $json;
     }
 
-    public function update($id,$nivelusuario){
-        $this->sql = "CALL sp_accounts_update('$id','$nivelusuario')";
+    public function update($id,$id_cuenta){
+        $this->sql = "CALL sp_desactivar_denuncia('$id','$id_cuenta')";
         $update = $this->conn->query($this->sql);
         if($update){
             $titleMessage=array("msj"=>"success");
@@ -83,7 +83,7 @@ class APIDenuncias {
         return $json;
     }
 
-    public function delete($id,$razon){
+    public function delete($id){
         $this->sql = "CALL sp_accounts_locked('$id','$razon')";
         $delete = $this->conn->query($this->sql);
         if($delete){

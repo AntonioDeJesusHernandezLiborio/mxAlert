@@ -34,7 +34,6 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">PREMIUM</h1>
             </div><!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -42,6 +41,45 @@
       <!-- /.content-header -->
 
       <!-- Main content -->
+      <div id="index">
+        <div class="row">
+          <div class="offset-3 col-md-6 offset-3">
+            <h1 class="m-0 text-dark"> Bienvenido {{nombre_usuario}}</h1>
+            <br>
+          </div>
+          <div class="col-12">
+            <br>
+            <br>
+            <br>
+
+            <div class="row">
+              <div class="offset-5 col-md-2 offset-5">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h4 class="card-title">CANTIDAD DE DENUNCIAS HECHAS</h4>
+                    <h6 class="card-subtitle mb-2 text-muted">Usted puede desactivar y visualizar todas las denuncias.</h6>
+                    <p class="card-text">Usted ha publicado <strong>{{numero_denuncias}}</strong> denuncias</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="offset-5 col-md-2 offset-5">
+                <div class="card" style="width: 18rem;">
+                  <div class="card-body">
+                    <h4 class="card-title">DETALLES DE CUENTA</h4>
+                    <p class="card-text">Nombre del titular: <strong>{{nombre_titular}}</strong></p>
+                    <p class="card-text">Telefono: <strong>{{telefono}}</strong></p>
+                    <p class="card-text">Nombre usuario: <strong>{{nombre}}</strong></p>
+                    <p class="card-text">Fecha creacion: <strong>{{fecha_creacion}}</strong></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- /.content -->
     </div>
@@ -64,8 +102,11 @@
   <script src="../assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../assets/js/adminlte.js"></script>
+  <script src="../assets/js/axios.js"></script>
+  <script src="../assets/js/vue.js"></script>
   <script src="../assets/js/app.js"></script>
   <script src="../assets/js/validateCredentials.js"></script>
-</body> 
+  <script src="../controller/controller_index.js"></script>
+</body>
 
 </html>

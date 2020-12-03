@@ -1,4 +1,3 @@
-
 function cargarSectionPages(){
     $("#header").load("./header.html");
     $("#sidebar").load("./sidebar.html");
